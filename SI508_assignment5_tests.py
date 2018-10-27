@@ -63,7 +63,11 @@ class Deck_class(unittest.TestCase):
 
 
 class Play(unittest.TestCase):
-	def test_
+	def test_game_winner(self):
+		self.assertIsInstance(play_war_game(),tuple)
+		
+
+
 
 
 
