@@ -51,7 +51,7 @@ This code is based on ideas about decks of "standard 52-deck" playing cards. You
 	* The function has one keyword parameter *testing*, whose default value is False. When the function is called with testing=True, the function does not make any print statements, making it easier to see tests.
 		* (NOTE: You do not have to test this -- it is difficult to test print statements, because print is for people! However, when testing this function, you should ALWAYS invoke it with testing=True and NEVER with the default value, or the tests will be very difficult to read.)
 
-	* The play_war_game function should initialize two Deck instances, representing Player 1 and Player 2, inside its function scope and simulate a variation on the card game of War (http://www.bicyclecards.com/how-to-play/war/). This happens with no external input. There are 3 possible outcomes: the Player1 score is larger than the Player2 score and Player1 wins, the Player2 score is larger than the Player1 score and Player2 wins, or the two scores are the same and there is a tie.
+	* The play_war_game function shouldf initialize two Deck instances, representing Player 1 and Player 2, inside its function scope and simulate a variation on the card game of War (http://www.bicyclecards.com/how-to-play/war/). This happens with no external input. There are 3 possible outcomes: the Player1 score is larger than the Player2 score and Player1 wins, the Player2 score is larger than the Player1 score and Player2 wins, or the two scores are the same and there is a tie.
 
 	* The play_war_game function should always return a tuple of a string and two integers, where the string is either "Player1", "Player2", or "Tie", and the integers represent the Player1 score and the Player2 score, respectively.
 
