@@ -9,3 +9,7 @@ INSTRUCTIONS_SI508_HW5.txt:
 SI508_assignment5_tests.py:
 
         A test file that tests the SI508_card.py, and contains many tests which test every part of the .py file.
+
+SI508_cards.py:
+
+		Codes that describe a card card war game which the test file wants to test, conatians two classes and one function.
