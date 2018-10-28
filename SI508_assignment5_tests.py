@@ -33,7 +33,15 @@ class Deck_class(unittest.TestCase):
 
 	def test_varible(self):
 		self.assertIsInstance(Deck().cards,list)
+		self.assertEqual(type(Deck().cards[0]),type(Card()))
 		self.assertEqual(len(Deck().__str__().split("\n")),52)
+		count_dic_suit = {"Diamonds":0,"Clubs":0,"Hearts":0,"Spades":0}
+		for string in Deck().__str__().split("\n"):
+			for suit in Card.suit_names:
+				if suit  in string:
+					count_dic_suit[suit] += 1
+		for item in list(count_dic_suit.keys()):
+			self.assertEqual(count_dic_suit[item],13) 
 
 	def test_POP_test(self):
 		new_Deck = Deck()
@@ -47,30 +55,36 @@ class Deck_class(unittest.TestCase):
 		self.assertEqual(len(new_Deck2.cards),0)
 
 	def test_shuffle_test(self):
-		self.assertIsInstance(Deck().shuffle(),list)
-		self.assertTrue(Deck().cards != Deck().shuffle())
+		new_Deck = Deck()
+		self.assertTrue(new_Deck.cards != new_Deck.shuffle())
 
 	def test_replace_card(self):
 		for card in Deck().cards:
 			Deck().replace_card(Card())
 			self.assertTrue(len(Deck().cards),52)
+		new_Deck = Deck()
+		new_Deck.pop_card()
+		card_pop = new_Deck.pop_card()
+		new_Deck.replace_card(card_pop)
+		self.assertEqual(new_Deck.cards[-1],card_pop)
 
 	def test_sort_card(self):
 		if Deck().cards[0] == "Ace of Diamonds":
 			Deck().shuffle()
 		else:
 			Deck().sort_cards()
-		self.assertIsInstance(Deck().sort_cards(),list)
-		self.assertEqual(Deck().cards[0],"Ace of Diamonds")
+		self.assertEqual(Deck().cards[0].__str__(),"Ace of Diamonds")
 
 	def test_deal_hand(self):
 		new_Deck = Deck()
 		self.assertIsInstance(Deck().deal_hand(3),list)
-		self.assertEqual(len(Deck().deal_hand(3)),3)
+		self.assertEqual(len(Deck().deal_hand(52)),52)
 		self.assertEqual(type(Deck().deal_hand(3)[0]),type(Card()))
-		for i in range(22):
-			new_Deck.pop_card()
-		self.assertEqual(len(new_Deck.deal_hand(40)),32)
+		for i in range(52):
+			order = len(new_Deck.cards)
+			card_pop = new_Deck.pop_card(order-1)
+			self.assertTrue(card_pop in Deck().deal_hand(52))
+		# self.assertEqual(len(new_Deck.deal_hand(40)),32)
 
 
 class Play(unittest.TestCase):
