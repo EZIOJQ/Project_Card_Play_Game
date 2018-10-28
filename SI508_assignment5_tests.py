@@ -27,7 +27,10 @@ class Consructor(Card_class):
 		for suit in range(len(Card.suit_names)):
 			for rank in Card.rank_levels:
 				self.example = Card(suit,rank)
-				self.assertEqual(self.example.__str__(),"{} of {}".format(self.example.faces[rank],self.example.suit))
+				if rank in [1,11,12,13]:
+					self.assertEqual(self.example.__str__(),"{} of {}".format(self.example.faces[rank],self.example.suit))
+				else:
+					self.assertEqual(self.example.__str__(),"{} of {}".format(rank,suit))
 
 class Deck_class(unittest.TestCase):
 
@@ -68,12 +71,18 @@ class Deck_class(unittest.TestCase):
 		new_Deck.replace_card(card_pop)
 		self.assertEqual(new_Deck.cards[-1],card_pop)
 
-	def test_sort_card(self):
+	def test_sort_card_output(self):
 		if Deck().cards[0] == "Ace of Diamonds":
 			Deck().shuffle()
 		else:
 			Deck().sort_cards()
 		self.assertEqual(Deck().cards[0].__str__(),"Ace of Diamonds")
+
+	def test_sort_card_num(self):
+		new_Deck = Deck()
+		new_Deck.pop_card()
+		new_Deck.sort_cards()
+		self.assertEqual(len(new_Deck.cards),51)
 
 	def test_deal_hand(self):
 		new_Deck = Deck()
@@ -84,17 +93,18 @@ class Deck_class(unittest.TestCase):
 			order = len(new_Deck.cards)
 			card_pop = new_Deck.pop_card(order-1)
 			self.assertTrue(card_pop in Deck().deal_hand(52))
-		# self.assertEqual(len(new_Deck.deal_hand(40)),32)
 
 
 class Play(unittest.TestCase):
 	def test_game_winner(self):
-		self.assertIsInstance(play_war_game(),tuple)
+		out = play_war_game(False)
+		self.assertIsInstance(out,tuple)
 
 	def test_reuslt_value(self):
-		self.assertIsInstance(play_war_game()[0],str)
-		self.assertIsInstance(play_war_game()[1],int)
-		self.assertIsInstance(play_war_game()[2],int)
+		out = play_war_game(False)
+		self.assertIsInstance(out[0],str)
+		self.assertIsInstance(out[1],int)
+		self.assertIsInstance(out[2],int)
 		
 
 
