@@ -1,19 +1,20 @@
 # SI508_HW5 files #
 
 
-##code_description_SI508_assignment5.txt##
+## code_description_SI508_assignment5.txt:
 
 1. Describe the function that the assignment file should do with, which refers to a .py file names "SI508_cards".
     
-##INSTRUCTIONS_SI508_HW5.txt##
-        
+## INSTRUCTIONS_SI508_HW5.txt:
+
+
 1. Describe the ovberall steps that the assignment flie should do, and what the workflow is in the assignment file.
 
-##SI508_assignment5_tests.py##
+## SI508_assignment5_tests.py:
 
 1. A test file that tests the SI508_card.py, and contains many tests which test every part of the .py file.
 
-##SI508_cards.py##
+## SI508_cards.py:
 
 1. Codes that describe a card card war game which the test file wants to test, conatians two classes and one function.
 2. This code contains 3 errors which will be tested in the tests file, can 
