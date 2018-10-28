@@ -36,9 +36,15 @@ class Deck_class(unittest.TestCase):
 		self.assertEqual(len(Deck().__str__().split("\n")),52)
 
 	def test_POP_test(self):
+		new_Deck = Deck()
+		new_Deck2 = Deck()
+		item1 = new_Deck.pop_card()
+		new_Deck.replace_card(item1)
+		self.assertEqual(item1.__str__(),new_Deck.cards.pop(-1).__str__())
 		for i in range(52):
-			Deck().pop_card(i)
-		self.assertEqual(Deck().cards,[])
+			order = len(new_Deck2.cards)
+			new_Deck2.pop_card(order-1)
+		self.assertEqual(len(new_Deck2.cards),0)
 
 	def test_shuffle_test(self):
 		self.assertIsInstance(Deck().shuffle(),list)
@@ -50,21 +56,31 @@ class Deck_class(unittest.TestCase):
 			self.assertTrue(len(Deck().cards),52)
 
 	def test_sort_card(self):
-		Deck().sort_cards()
+		if Deck().cards[0] == "Ace of Diamonds":
+			Deck().shuffle()
+		else:
+			Deck().sort_cards()
 		self.assertIsInstance(Deck().sort_cards(),list)
 		self.assertEqual(Deck().cards[0],"Ace of Diamonds")
 
 	def test_deal_hand(self):
+		new_Deck = Deck()
 		self.assertIsInstance(Deck().deal_hand(3),list)
 		self.assertEqual(len(Deck().deal_hand(3)),3)
 		self.assertEqual(type(Deck().deal_hand(3)[0]),type(Card()))
-		Deck().pop_card(22)
-		self.assertEqual(len(Deck().deal_hand(40)),32)
+		for i in range(22):
+			new_Deck.pop_card()
+		self.assertEqual(len(new_Deck.deal_hand(40)),32)
 
 
 class Play(unittest.TestCase):
 	def test_game_winner(self):
 		self.assertIsInstance(play_war_game(),tuple)
+
+	def test_reuslt_value(self):
+		self.assertIsInstance(play_war_game()[0],str)
+		self.assertIsInstance(play_war_game()[1],int)
+		self.assertIsInstance(play_war_game()[2],int)
 		
 
 
