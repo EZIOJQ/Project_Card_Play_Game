@@ -1,5 +1,4 @@
-# Jieqing Chen #
-# SI508_HW5 files #
+
 
 
 ## code_description_SI508_assignment5.txt:
